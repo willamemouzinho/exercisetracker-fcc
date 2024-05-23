@@ -9,10 +9,12 @@ import { getAllUsers } from './routes/get-all-users'
 import { getLogs } from './routes/get-logs'
 
 const app = express()
+
 app.use(cors())
-app.use('/public', express.static(path.join(__dirname, '../public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use('/public', express.static(path.join(__dirname, '../public')))
+
 app.get('/', (req: Request, res: Response) => {
 	res.sendFile(path.join(__dirname, '../views/index.html'))
 })
